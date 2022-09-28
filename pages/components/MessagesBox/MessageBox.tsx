@@ -23,7 +23,7 @@ const MessagesBox = ({ messages, user, ...props }: MessagesBoxProps) => {
   return (
       <div className="messages-box">
         {messages.map((message, index) =>
-            <MessageBox key={index} content={message.content} type={user === message.sender ? 'sent' : 'received'}/>
+            <MessageBox key={index} content={message.content} type={user?.name === message.sender?.name ? 'sent' : 'received'}/>
         )}
         <div ref={messagesEndRef} />
       </div>

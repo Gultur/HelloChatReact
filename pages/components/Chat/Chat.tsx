@@ -1,6 +1,6 @@
 import * as React from "react";
 import Message from "../../interface/Message";
-import User from "../../interface/user";
+import User from "../../interface/User";
 import UserChatBox from "../UserChatBox";
 
 export interface ChatProps {
