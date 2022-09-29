@@ -11,7 +11,6 @@ const Chat = ({ ...props }: ChatProps) => {
 
   const onSubmit = (message:Message) => {
     setMessages([...messages, message])
-    console.log(messages)
 }
 
   const [messages, setMessages] = React.useState<Message[]>([]);
