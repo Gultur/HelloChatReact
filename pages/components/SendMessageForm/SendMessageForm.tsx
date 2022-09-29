@@ -10,29 +10,31 @@ export interface SendMessageFormProps {
 
 const SendMessageForm = ({ onSubmit, user, ...props }: SendMessageFormProps) => {
 
+  const [inputValue, setInputValue] = React.useState('')
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    console.log(event);
-    console.log(event.target);
-
-    const target = event.target as typeof event.target & {
-      message: { value: string };
-    };
 
     const newMessage: Message = {
-      content: target.message.value,
+      content: inputValue,
       sender: user,
     };
 
-    onSubmit(newMessage);
+    onSubmit(newMessage); // this semi-colon is required , the ( from the new line messed up
 
-    (event.target as HTMLFormElement).reset();
+    (event.target as HTMLFormElement).reset(); // we need to reset the input
+    setInputValue('');
   };
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+  {
+    setInputValue(event.target.value)
+  }
 
   return (
       <form className='input-message' onSubmit={handleSubmit}>
-        <textarea placeholder="WriteMessage" name="message" required/>
-        <button type="submit">OK</button>
+        <textarea placeholder="Ecrivez votre message" name="message" onChange={handleInputChange} required/>
+        <button type="submit" disabled = {inputValue === ''}>OK</button>
       </form>
   );
 };
