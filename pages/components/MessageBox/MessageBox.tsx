@@ -8,9 +8,9 @@ export interface MessageBoxProps {
 const MessageBox = ({ type, content, ...props }: MessageBoxProps) => {
 
   return (
-    <p className={type === 'sent'? 'self message' : 'other message'}>
-        <pre>{content}</pre>
-    </p>
+    <pre className={type === 'sent'? 'self message' : 'other message'}>
+        {content}
+    </pre>
   );
 };
 
